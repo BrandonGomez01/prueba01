@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para vos 💗</title>
+<style>
+  body {
+    margin:0; height:100vh; display:flex; justify-content:center; align-items:center;
+    background:#ffe4ec; font-family:sans-serif; overflow:hidden; text-align:center;
+  }
+  .container { z-index:1; }
+  h1 { font-size:2.5rem; color:#ff3b7f; }
+  button {
+    padding:15px 30px; font-size:1.2rem; border:none; border-radius:30px;
+    cursor:pointer; margin:10px; font-weight:bold;
+  }
+  #yes { background:#ff3b7f; color:white; box-shadow:0 5px 15px rgba(255,59,127,0.4); }
+  #no { background:white; color:#ff3b7f; position:absolute; }
+
+  /* Pantalla sorpresa */
+  #sorpresa {
+    display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:white; overflow-y:auto; padding:20px; box-sizing:border-box;
+  }
+  #sorpresa img { width:250px; border-radius:15px; margin:10px; }
+</style>
+</head>
+<body>
+
+<div class="container" id="pregunta">
+  <h1>¿Me amás mucho? 💗</h1>
+  <button id="yes">SÍ 🥰</button>
+  <button id="no">NO 😒</button>
+</div>
+
+<div id="sorpresa">
+  <h1>Sabía que ibas a decir que SÍ! 💖</h1>
+  <p>Acá va tu carta de amor...</p>
+  <p><i>Escribí acá todo lo que sentís por esa persona. Esta es nuestra historia.</i></p>
+  
+  <div>
+    <img src="https://via.placeholder.com/300?text=Foto+1" alt="">
+    <img src="https://via.placeholder.com/300?text=Foto+2" alt="">
+    <img src="https://via.placeholder.com/300?text=Foto+3" alt="">
+  </div>
+
+  <p>Nuestra canción 🎵</p>
+  <audio controls autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <br><br>
+  <p>Te amo ❤️</p>
+</div>
+
+<script>
+  const noBtn = document.getElementById('no');
+  const yesBtn = document.getElementById('yes');
+
+  function moverBoton() {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  }
+
+  noBtn.addEventListener('mouseover', moverBoton);
+  noBtn.addEventListener('touchstart', moverBoton);
+  noBtn.addEventListener('click', moverBoton);
+
+  yesBtn.addEventListener('click', () => {
+    document.getElementById('pregunta').style.display = 'none';
+    document.getElementById('sorpresa').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
